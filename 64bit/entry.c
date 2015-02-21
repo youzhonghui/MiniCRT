@@ -21,10 +21,9 @@ void mini_crt_entry(void)
 #ifdef WIN32
 	long flag	= 0;
 	long argc	= 0;
-	char* argv[16];	//���16������
+	char* argv[16];
 	char* cl = GetCommandLineA();
 
-	//����������
 	argv[0]	= cl;
 	argc++;
 	while (*cl)
@@ -83,7 +82,7 @@ void exit(long exitCode)
 #ifdef WIN32
 	ExitProcess(exitCode);
 #else
-	asm( "movq %0,%%rbx \n\t" 
+	asm( "movq %0,%%rbx \n\t"
 		 "movq $1,%%rax \n\t"
 		 "int $0x80		\n\t"
 		 "hlt    \n\t"::"m"(exitCode));

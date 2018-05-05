@@ -66,6 +66,7 @@ void* malloc(unsigned size)
 			&&(header->size <= size + HEADER_SIZE *2))
 		{
 			header->type = HEAP_BLOCK_USED;
+			return ADDR_ADD(header,HEADER_SIZE);//after mark this block as used,you have to return immediately
 		}
 
 		if (header->size > size + HEADER_SIZE*2)

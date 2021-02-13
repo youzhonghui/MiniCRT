@@ -75,7 +75,7 @@ void* malloc(unsigned long size)
 			next->prev	= header;
 			next->next	= header->next;
 			next->type	= HEAP_BLOCK_FREE;
-			next->size	= header->size -(size - HEADER_SIZE);
+			next->size	= header->size -(size + HEADER_SIZE);
 			header->next	= next;
 			header->size	= size +HEADER_SIZE;
 			header->type	= HEAP_BLOCK_USED;
